@@ -1,0 +1,187 @@
+:root{
+
+    /* primary color */
+    --clr-primary-violet: hsl(263, 55%, 52%);
+    --clr-primary-dark-grayish-blue: hsl(217, 19%, 35%);
+    --clr-primary-dark-blackish-blue: hsl(219, 29%, 14%);
+    --clr-white: hsl(0, 0%, 100%);
+
+    /* neutral color */
+    --clr-neutral-light-gray: hsl(0,0%, 81%);
+    --clr-neutral-light-grayish-blue: hsl(210, 46%, 95%);
+    
+    /* Note for text colors:
+
+    1. "Verified Graduate" has the same color as the person's name with 50% opacity
+    2. Review paragraphs inside the quotations have the same color as well, but are at 70% opacity
+    */
+    --fs: 0.8125rem; /*13px*/
+
+    --ff: 'Barlow Semi Condensed', sans-serif;
+
+    /* Mobile: 375px
+    - Desktop: 1440px
+     */
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+body{
+    font-family: var(--ff);
+    margin-inline: 2rem;
+    /* padding-block: 3rem; */
+    padding-block: clamp(2.5rem, 10vw, 3.5rem);
+    background-color: var(--clr-neutral-light-grayish-blue)
+    
+}
+main{
+    margin-block: auto;
+}
+
+.container{
+    /* margin-inline: auto; */
+    /* border: 1px solid red; */
+    padding: 2rem;
+    border-radius: 10px;
+    
+    position: relative;
+    z-index: 1;
+}
+
+svg{
+    position: absolute;
+
+    
+    top: 0;
+    right: 5%;
+    z-index: -1;
+    
+    
+}
+
+.wrapper{
+    --max-width: 1100px;
+    --padding: 1rem;
+
+    width: min(var(--max-width),100%);
+    margin-inline: auto;
+
+    display: grid;
+    row-gap: 2rem;
+    
+}
+.light_scheme{
+    color: var(--clr-primary-dark-blackish-blue);
+}
+.dark_scheme{  
+   color: var(--clr-white);
+}
+
+.violet{
+    background-color: var(--clr-primary-violet);
+}
+.grey{
+    background-color: var(--clr-primary-dark-grayish-blue);
+}
+.black{
+    background-color: var(--clr-primary-dark-blackish-blue);
+}
+.white{
+    background-color: var(--clr-white);
+    box-shadow: 8px 10px 20px 2px var(--clr-neutral-light-gray);
+
+}
+
+p{ 
+    font-size: var(--fs);
+    opacity: 70%;
+    line-height: 1.5;
+   
+}
+img{
+    display: block;
+    border-radius: 50%;
+    width: 100%;
+}
+
+img[data-type="inverted"]{
+    border: 2px solid hsl(263, 75%, 69%)
+}
+
+.quotation{
+    position: relative;
+}
+h3::after{
+    content:'Verified Graduate';
+    display: flex;
+    /* color: var(--clr-white); */
+    opacity: 50%
+}
+
+.name_header{
+    display: grid;
+    grid-template-columns: 2.1875rem 1fr;
+    gap: .75rem;
+    align-items: center;
+    font-size: var(--fs)
+}
+h1{
+    padding-top: 0.75rem;
+    padding-bottom: 1rem;
+    
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.5;
+   
+}
+
+@media (min-width: 46.875rem){
+    .wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+    }
+
+    .wrapper > :last-child{ 
+        grid-area: 3 / span 2;
+    }
+}
+
+@media (min-width: 56.25rem){
+    .wrapper{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .wrapper > :last-child{
+        grid-row-start: 1;
+        grid-row-end: span 2;
+        grid-column-start: 4;
+        grid-column-end: auto;
+
+        
+    }
+
+    .wrapper > :first-child{
+        grid-row-start: 1;
+        grid-row-end: auto;
+        grid-column-start: 1;
+        grid-column-end: span 2;
+    }
+
+    .wrapper > :nth-child(4){
+        grid-row-start: 2;
+        grid-row-end: auto;
+        grid-column-start: 2;
+        grid-column-end: span 2;
+    }
+
+
+}
